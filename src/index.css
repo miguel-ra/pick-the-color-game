@@ -17,6 +17,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
+  letter-spacing: 0.4rem;
+  font-weight: lighter;
 }
 
 code {
