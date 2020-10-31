@@ -1,6 +1,12 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
 
+function Title({ component: Component = "h1", ...props }) {
+  const classes = useStyles();
+
+  return <Component className={classes.title} {...props} />;
+}
+
 const useStyles = createUseStyles({
   title: {
     textTransform: "uppercase",
@@ -10,11 +16,5 @@ const useStyles = createUseStyles({
     textAlign: "center",
   },
 });
-
-function Title({ component: Component = "h1", ...props }) {
-  const classes = useStyles();
-
-  return <Component className={classes.title} {...props} />;
-}
 
 export default Title;

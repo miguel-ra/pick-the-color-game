@@ -8,27 +8,6 @@ function arrayToHSL(color) {
   return `hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`;
 }
 
-const useStyles = createUseStyles({
-  container: {
-    display: "grid",
-    gridTemplateColumns: ({ size }) => `repeat(${size}, 1fr)`,
-    gridTemplateRows: ({ size }) => `repeat(${size}, 1fr)`,
-    gridGap: "min(1vw, 1vh)",
-    color: "white",
-    width: `calc(min(${MAX_HEIGHT}vh, ${MAX_WIDTH}vw) - 3.2rem)`,
-    height: `calc(min(${MAX_HEIGHT}vh, ${MAX_WIDTH}vw) - 3.2rem)`,
-  },
-  tile: {
-    border: "none",
-    cursor: "pointer",
-    transition: "transform 0.2s linear",
-    "&:focus, &:hover": {
-      outline: "none",
-      transform: "scale(0.9) rotate(2deg)",
-    },
-  },
-});
-
 function generateDifferentColor(color, size) {
   const factor = 50 / size;
   const plusOrMinus = color[2] > 50 ? -1 : 1;
@@ -58,5 +37,25 @@ function Tiles({ size, color, differentTile, handleClick }) {
     </div>
   );
 }
+
+const useStyles = createUseStyles({
+  container: {
+    display: "grid",
+    gridTemplateColumns: ({ size }) => `repeat(${size}, 1fr)`,
+    gridGap: "min(1vw, 1vh)",
+    color: "white",
+    width: `calc(min(${MAX_HEIGHT}vh, ${MAX_WIDTH}vw) - 3.2rem)`,
+    height: `calc(min(${MAX_HEIGHT}vh, ${MAX_WIDTH}vw) - 3.2rem)`,
+  },
+  tile: {
+    border: "none",
+    cursor: "pointer",
+    transition: "transform 0.2s linear",
+    "&:focus, &:hover": {
+      outline: "none",
+      transform: "scale(0.9) rotate(2deg)",
+    },
+  },
+});
 
 export default Tiles;
