@@ -6,12 +6,18 @@ import { BREAKPOINT_SMALL } from "../../styles/breakpoints";
 function SaveScoreForm({ onSubmit, score }) {
   const classes = useStyles();
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    const { name, score } = event.target.elements;
+    onSubmit({ name: name.value, score: score.value });
+  }
+
   return (
     <>
       <Title component="h3" className={classes.title}>
         Save your score
       </Title>
-      <form autoComplete="off" onSubmit={onSubmit} className={classes.form}>
+      <form autoComplete="off" onSubmit={handleSubmit} className={classes.form}>
         <input type="hidden" id="score" name="score" value={score} />
         <label>Enter you name</label>
         <input id="name" name="name" maxLength="10" required />
@@ -29,12 +35,12 @@ const useStyles = createUseStyles({
     width: "100%",
     flexDirection: "column",
     alignItems: "stretch",
-    marginBottom: "3.2rem",
   },
   [`@media (min-width: ${BREAKPOINT_SMALL})`]: {
     form: {
       flexDirection: "row",
       alignItems: "baseline",
+      justifyContent: "center",
       gap: "0",
       "& label": {
         marginRight: "1.6rem",

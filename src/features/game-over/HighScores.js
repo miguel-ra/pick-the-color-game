@@ -42,18 +42,14 @@ const useStyles = createUseStyles({
   table: {
     width: "100%",
     marginBottom: "3.2rem",
-    textAlign: "left",
+    textAlign: "center",
     "& th": {
       textTransform: "uppercase",
       fontWeight: "lighter",
       fontSize: "2rem",
     },
     "& th, & td": {
-      padding: "0 1.6rem 0.8rem 0",
-      "&:last-child": {
-        textAlign: "left",
-        paddingRight: 0,
-      },
+      padding: "0 1.6rem 0.8rem",
     },
   },
   newRecord: {

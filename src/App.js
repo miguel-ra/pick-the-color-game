@@ -28,7 +28,7 @@ function App() {
 const useStyles = createUseStyles({
   container: {
     display: "flex",
-    padding: "1.6rem",
+    padding: "3.2rem",
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
