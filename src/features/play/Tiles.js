@@ -9,7 +9,7 @@ function arrayToHSL(color) {
 }
 
 function generateDifferentColor(color, size) {
-  const factor = 50 / size;
+  const factor = 30 / (size - 1);
   const plusOrMinus = color[2] > 50 ? -1 : 1;
 
   return [color[0], color[1], color[2] + factor * plusOrMinus];

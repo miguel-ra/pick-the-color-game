@@ -10,8 +10,8 @@ function getRandomPosition(size) {
 
 function getRandomColor() {
   const h = Math.floor(Math.random() * 360);
-  const s = Math.floor(Math.random() * 60 + 40);
-  const l = Math.floor(Math.random() * 50 + 30);
+  const s = Math.floor(Math.random() * 40 + 30);
+  const l = Math.floor(Math.random() * 40 + 40);
   return [h, s, l];
 }
 
