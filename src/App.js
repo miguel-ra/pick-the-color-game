@@ -20,8 +20,6 @@ function App() {
     gameOver: <GameOver score={score} onReset={() => setScreen("play")} />,
   };
 
-  console.log("render");
-
   return (
     <div className={classes.container}>{screens[screen] || screens.play}</div>
   );

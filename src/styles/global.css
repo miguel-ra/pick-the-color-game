@@ -26,6 +26,15 @@ code {
     monospace;
 }
 
+input {
+  padding: 0.7rem 1.6rem;
+  /* margin: 0 -1px; */
+}
+
 button {
   cursor: pointer;
+  text-transform: uppercase;
+  background-color: white;
+  border: 1px solid grey;
+  padding: 0.8rem 1.6rem;
 }

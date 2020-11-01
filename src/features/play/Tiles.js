@@ -51,6 +51,7 @@ const useStyles = createUseStyles({
     border: "none",
     cursor: "pointer",
     transition: "transform 0.2s linear",
+    padding: 0,
     "&:focus, &:hover": {
       outline: "none",
       transform: "scale(0.9) rotate(2deg)",

@@ -1,16 +1,12 @@
 import React, { useState } from "react";
-import Separator from "../../components/separator/Separator";
+import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
+import { BREAKPOINT_SMALL } from "../../styles/breakpoints";
 import { useLocalStorageState } from "../../utils/useLocalStorageState";
+import HighScores from "./HighScores";
+import SaveScoreForm from "./SaveScoreForm";
 
 const SCORES_TO_SAVE = 5;
-
-const ordinalSuffix = {
-  1: "st",
-  2: "nd",
-  3: "rd",
-  default: "th",
-};
 
 function GameOver({ score = 0, onReset }) {
   const [saved, setSaved] = useState();
@@ -22,6 +18,9 @@ function GameOver({ score = 0, onReset }) {
         JSON.parse(value).map(({ isNew, ...score }) => score),
     }
   );
+  const classes = useStyles();
+
+  const canSave = (highScores[SCORES_TO_SAVE - 1]?.score || 0) < score;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -40,90 +39,67 @@ function GameOver({ score = 0, onReset }) {
     setSaved(event.target.elements.name.value);
   }
 
-  console.log(highScores[SCORES_TO_SAVE - 1]?.score);
-
   return (
-    <>
-      <Separator />
-      <Title style={{ marginBottom: "3.2rem" }}>High scores</Title>
-      <Separator />
-      <table style={{ marginBottom: "3.2rem", textAlign: "left" }}>
-        <thead>
-          <tr>
-            <th
-              style={{
-                textTransform: "uppercase",
-                fontWeight: "lighter",
-                padding: "0 1.6rem 0.8rem 0",
-                fontSize: "2rem",
-              }}
-            >
-              Rank
-            </th>
-            <th
-              style={{
-                textTransform: "uppercase",
-                fontWeight: "lighter",
-                padding: "0 1.6rem 0.8rem 0",
-                fontSize: "2rem",
-              }}
-            >
-              Score
-            </th>
-            <th
-              style={{
-                textTransform: "uppercase",
-                fontWeight: "lighter",
-                padding: "0 1.6rem 0.8rem 0",
-                fontSize: "2rem",
-              }}
-            >
-              Name
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {highScores.map((record, index) => (
-            <tr
-              key={`${index}_${record.name}_${record.score}`}
-              style={{ fontWeight: record.isNew ? "normal" : "" }}
-            >
-              <td>
-                {index + 1}
-                <sup>{ordinalSuffix[index] || ordinalSuffix.default}</sup>
-              </td>
-              <td>{record.score}</td>
-              <td style={{ textTransform: "uppercase" }}>{record.name}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      <Separator />
-      <Title component="h2" style={{ marginBottom: "3.2rem" }}>
-        You score: {score}
-      </Title>
-      <Separator />
-      {!saved && (highScores[SCORES_TO_SAVE - 1]?.score || 0) < score && (
-        <>
-          <Title component="h3" style={{ marginBottom: "1.6rem" }}>
-            Save your score
-          </Title>
-          <form
-            autoComplete="off"
-            onSubmit={handleSubmit}
-            style={{ marginBottom: "1.6rem" }}
-          >
-            <input type="hidden" id="score" name="score" value={score} />
-            <label>Enter you name:</label>
-            <input id="name" name="name" maxLength="10" required />
-            <button type="submit">Save</button>
-          </form>
-          <br />
-        </>
-      )}
-      <button onClick={onReset}>Try again</button>
-    </>
+    <div className={classes.container}>
+      <div className={classes.content}>
+        <Title
+          component="h2"
+          className={classes.title}
+          topSeparator
+          bottomSeparator={!highScores.length}
+        >
+          You score: {score}
+        </Title>
+        {highScores.length ? (
+          <>
+            <Title className={classes.title} topSeparator bottomSeparator>
+              High scores
+            </Title>
+            <HighScores data={highScores} />
+          </>
+        ) : null}
+        {!saved && canSave && (
+          <SaveScoreForm onSubmit={handleSubmit} score={score} />
+        )}
+      </div>
+      <button className={classes.button} onClick={onReset}>
+        Try again
+      </button>
+    </div>
   );
 }
+
+const useStyles = createUseStyles({
+  container: {
+    maxWidth: "80vw",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: "100%",
+    justifyContent: "space-between",
+  },
+  content: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "1.6rem",
+    marginBottom: "3.2rem",
+  },
+  title: {
+    marginBottom: "3.2rem",
+  },
+  button: {
+    width: "100%",
+    marginBottom: "1.6rem",
+  },
+  [`@media (min-width: ${BREAKPOINT_SMALL})`]: {
+    button: {
+      width: "auto",
+    },
+    container: {
+      height: "auto",
+    },
+  },
+});
 
 export default GameOver;

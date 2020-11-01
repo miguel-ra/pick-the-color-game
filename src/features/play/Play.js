@@ -23,7 +23,7 @@ function generateInitialState() {
   };
 }
 
-function Game({ onGameOver }) {
+function Play({ onGameOver }) {
   const [{ color, size, differentTile }, setState] = useState(
     generateInitialState
   );
@@ -61,4 +61,4 @@ function Game({ onGameOver }) {
   );
 }
 
-export default Game;
+export default Play;
