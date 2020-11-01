@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import useMoveWithKeys from "./useMoveWithKeys";
 
@@ -60,5 +61,12 @@ const useStyles = createUseStyles({
     },
   },
 });
+
+Tiles.propTypes = {
+  size: PropTypes.number.isRequired,
+  color: PropTypes.arrayOf(PropTypes.number).isRequired,
+  differentTile: PropTypes.number.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default Tiles;

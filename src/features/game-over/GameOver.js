@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
 import { BREAKPOINT_SMALL } from "../../styles/breakpoints";
@@ -8,7 +9,7 @@ import SaveScoreForm from "./SaveScoreForm";
 
 const SCORES_TO_SAVE = 5;
 
-function GameOver({ score = 0, onReset }) {
+function GameOver({ score, onReset }) {
   const [saved, setSaved] = useState(false);
   const [highScores, setHighScores] = useLocalStorageState(
     "pick-the-color-game:highScores",
@@ -93,5 +94,14 @@ const useStyles = createUseStyles({
     },
   },
 });
+
+GameOver.defaultProps = {
+  score: 0,
+};
+
+GameOver.propTypes = {
+  score: PropTypes.number,
+  onReset: PropTypes.func.isRequired,
+};
 
 export default GameOver;

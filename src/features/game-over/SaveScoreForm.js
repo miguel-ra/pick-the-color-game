@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
 import { BREAKPOINT_SMALL } from "../../styles/breakpoints";
@@ -58,5 +59,10 @@ const useStyles = createUseStyles({
     },
   },
 });
+
+SaveScoreForm.propTypes = {
+  score: PropTypes.number.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default SaveScoreForm;

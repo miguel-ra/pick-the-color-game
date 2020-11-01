@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 
 const ordinalSuffix = {
@@ -59,5 +60,15 @@ const useStyles = createUseStyles({
     textTransform: "uppercase",
   },
 });
+
+HighScores.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      score: PropTypes.number,
+      isNew: PropTypes.bool,
+    })
+  ).isRequired,
+};
 
 export default HighScores;

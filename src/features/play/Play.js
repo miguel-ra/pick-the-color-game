@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
 import Tiles from "./Tiles";
@@ -71,5 +72,9 @@ const useStyles = createUseStyles({
     marginTop: "5.2rem",
   },
 });
+
+Play.propTypes = {
+  onGameOver: PropTypes.func.isRequired,
+};
 
 export default Play;

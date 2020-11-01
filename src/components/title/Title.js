@@ -1,12 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { createUseStyles } from "react-jss";
 import Separator from "../separator/Separator";
 
 function Title({
-  component: Component = "h1",
+  component: Component,
   className,
-  topSeparator = false,
-  bottomSeparator = false,
+  topSeparator,
+  bottomSeparator,
   ...props
 }) {
   const classes = useStyles();
@@ -35,5 +36,19 @@ const useStyles = createUseStyles({
     textAlign: "center",
   },
 });
+
+Title.defaultProps = {
+  component: "h1",
+  className: undefined,
+  topSeparator: false,
+  bottomSeparator: false,
+};
+
+Title.propTypes = {
+  component: PropTypes.elementType,
+  className: PropTypes.string,
+  topSeparator: PropTypes.bool,
+  bottomSeparator: PropTypes.bool,
+};
 
 export default Title;
