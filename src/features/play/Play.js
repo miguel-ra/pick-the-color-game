@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
 import Tiles from "./Tiles";
 
@@ -28,6 +29,7 @@ function Play({ onGameOver }) {
     generateInitialState
   );
   const score = size - INITIAL_SIZE;
+  const classes = useStyles();
 
   function nextStep() {
     setState(({ size }) => ({
@@ -47,18 +49,27 @@ function Play({ onGameOver }) {
 
   return (
     <>
-      <Title style={{ marginBottom: "5.2rem" }}>Pick the different color</Title>
+      <Title className={classes.title}>Pick the different color</Title>
       <Tiles
         size={size}
         color={color}
         differentTile={differentTile}
         handleClick={handleClick}
       />
-      <Title component="h3" style={{ marginTop: "5.2rem" }}>
+      <Title component="h3" className={classes.score}>
         Your score: {score}
       </Title>
     </>
   );
 }
+
+const useStyles = createUseStyles({
+  title: {
+    marginBottom: "5.2rem",
+  },
+  score: {
+    marginTop: "5.2rem",
+  },
+});
 
 export default Play;
