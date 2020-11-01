@@ -20,18 +20,17 @@ function App() {
     gameOver: <GameOver score={score} onReset={() => setScreen("play")} />,
   };
 
-  return (
-    <div className={classes.container}>{screens[screen] || screens.play}</div>
-  );
+  return <div className={classes.app}>{screens[screen] || screens.play}</div>;
 }
 
 const useStyles = createUseStyles({
-  container: {
+  app: {
+    flex: 1,
     display: "flex",
-    padding: "3.2rem",
+    margin: "3.2rem",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    height: "100%",
     boxSizing: "border-box",
     flexDirection: "column",
     position: "relative",

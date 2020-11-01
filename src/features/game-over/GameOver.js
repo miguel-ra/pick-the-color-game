@@ -6,7 +6,7 @@ import { useLocalStorageState } from "../../utils/useLocalStorageState";
 import HighScores from "./HighScores";
 import SaveScoreForm from "./SaveScoreForm";
 
-const SCORES_TO_SAVE = 10;
+const SCORES_TO_SAVE = 5;
 
 function GameOver({ score = 0, onReset }) {
   const [saved, setSaved] = useState(false);
@@ -31,10 +31,8 @@ function GameOver({ score = 0, onReset }) {
     setSaved(true);
   }
 
-  console.log(highScores);
-
   return (
-    <div className={classes.container}>
+    <div className={classes.gameOver}>
       <div className={classes.content}>
         <Title
           component="h2"
@@ -64,7 +62,7 @@ function GameOver({ score = 0, onReset }) {
 }
 
 const useStyles = createUseStyles({
-  container: {
+  gameOver: {
     width: "100%",
     display: "flex",
     flexDirection: "column",
@@ -76,7 +74,6 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "1.6rem",
     marginBottom: "3.2rem",
     width: "100%",
   },
@@ -85,13 +82,12 @@ const useStyles = createUseStyles({
   },
   button: {
     width: "100%",
-    marginBottom: "1.6rem",
   },
   [`@media (min-width: ${BREAKPOINT_SMALL})`]: {
     button: {
       width: "auto",
     },
-    container: {
+    gameOver: {
       width: "auto",
       height: "auto",
     },

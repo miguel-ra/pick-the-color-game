@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { createUseStyles } from "react-jss";
+import useMoveWithKeys from "./useMoveWithKeys";
 
 const MAX_HEIGHT = 50;
 const MAX_WIDTH = 100;
@@ -18,10 +19,11 @@ function generateDifferentColor(color, size) {
 function Tiles({ size, color, differentTile, handleClick }) {
   const differentColor = generateDifferentColor(color, size);
   const classes = useStyles({ size });
-  const squareRef = useRef();
+  const parentRef = useRef();
+  useMoveWithKeys(parentRef);
 
   return (
-    <div ref={squareRef} className={classes.container}>
+    <div ref={parentRef} className={classes.tiles}>
       {[...Array(size * size)].map((_, tileIndex) => (
         <button
           key={`${size}_${tileIndex}`}
@@ -39,7 +41,7 @@ function Tiles({ size, color, differentTile, handleClick }) {
 }
 
 const useStyles = createUseStyles({
-  container: {
+  tiles: {
     display: "grid",
     gridTemplateColumns: ({ size }) => `repeat(${size}, 1fr)`,
     gridGap: "min(1vw, 1vh)",

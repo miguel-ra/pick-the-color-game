@@ -12,7 +12,7 @@ function Title({
   const classes = useStyles();
 
   return (
-    <div className={classes.container}>
+    <div className={classes.titleRoot}>
       {topSeparator && <Separator />}
       <Component className={[classes.title, className].join(" ")} {...props} />
       {bottomSeparator && <Separator />}
@@ -21,7 +21,7 @@ function Title({
 }
 
 const useStyles = createUseStyles({
-  container: {
+  titleRoot: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
 import Title from "../../components/title/Title";
 import { BREAKPOINT_SMALL } from "../../styles/breakpoints";
 
 function SaveScoreForm({ onSubmit, score }) {
   const classes = useStyles();
+
+  useEffect(() => {
+    document.querySelector("#name")?.focus();
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -28,7 +32,10 @@ function SaveScoreForm({ onSubmit, score }) {
 }
 
 const useStyles = createUseStyles({
-  title: { marginBottom: "1.6rem" },
+  title: {
+    fontSize: "2rem",
+    marginBottom: "1.6rem",
+  },
   form: {
     display: "flex",
     gap: "1.6rem",
