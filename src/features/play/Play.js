@@ -70,6 +70,7 @@ const useStyles = createUseStyles({
   },
   score: {
     marginTop: "5.2rem",
+    marginBottom: 0,
   },
 });
 
