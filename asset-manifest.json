@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pick-the-color-game/static/css/main.68c1af3f.chunk.css",
-    "main.js": "/pick-the-color-game/static/js/main.c3095f9b.chunk.js",
-    "main.js.map": "/pick-the-color-game/static/js/main.c3095f9b.chunk.js.map",
+    "main.js": "/pick-the-color-game/static/js/main.910bf109.chunk.js",
+    "main.js.map": "/pick-the-color-game/static/js/main.910bf109.chunk.js.map",
     "runtime-main.js": "/pick-the-color-game/static/js/runtime-main.c4d12b46.js",
     "runtime-main.js.map": "/pick-the-color-game/static/js/runtime-main.c4d12b46.js.map",
     "static/js/2.a6baa967.chunk.js": "/pick-the-color-game/static/js/2.a6baa967.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.c4d12b46.js",
     "static/js/2.a6baa967.chunk.js",
     "static/css/main.68c1af3f.chunk.css",
-    "static/js/main.c3095f9b.chunk.js"
+    "static/js/main.910bf109.chunk.js"
   ]
 }
